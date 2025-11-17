@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.7</version>
+        <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>sayyeed.dev</groupId>
@@ -59,11 +59,16 @@
             <artifactId>java-dotenv</artifactId>
             <version>5.2.2</version>
         </dependency>
-        <!--   Telegram Bot     -->
+        <!--   Telegram Bot (Official API)     -->
         <dependency>
             <groupId>org.telegram</groupId>
-            <artifactId>telegrambots-spring-boot-starter</artifactId>
-            <version>6.9.7.0</version>
+            <artifactId>telegrambots-longpolling</artifactId>
+            <version>7.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots-client</artifactId>
+            <version>7.10.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
