@@ -30,4 +30,9 @@ public class UserService {
         }
     }
 
+    public String getUserId(Long telegramId) {
+        Optional<UserEntity> userEntityOptional = repository.findByChatId(telegramId);
+        return userEntityOptional.map(UserEntity::getId).orElse(null);
+    }
+
 }
