@@ -2,6 +2,8 @@ package sayyeed.dev.aiagenttelegrambot.entitly;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class UserEntity {
@@ -17,11 +19,13 @@ public class UserEntity {
     @Column(unique = true)
     private Long chatId;
 
+    @OneToMany(mappedBy = "user")
+    private List<UserAiLogsEntity> userAiLogsEntityList;
 
 
     /**
      * Getter & Setter
-     * **/
+     **/
 
     public String getId() {
         return id;
@@ -45,6 +49,14 @@ public class UserEntity {
 
     public void setChatId(Long chatId) {
         this.chatId = chatId;
+    }
+
+    public List<UserAiLogsEntity> getUserAiLogsList() {
+        return userAiLogsEntityList;
+    }
+
+    public void setUserAiLogsList(List<UserAiLogsEntity> userAiLogsEntityList) {
+        this.userAiLogsEntityList = userAiLogsEntityList;
     }
 
 }
