@@ -10,17 +10,18 @@ import org.telegram.telegrambots.meta.generics.TelegramClient;
 public class MessageService {
 
     private final TelegramClient telegramClient;
+    private final UserService userService;
 
-    public MessageService(TelegramClient telegramClient) {
+    public MessageService(TelegramClient telegramClient, UserService userService) {
         this.telegramClient = telegramClient;
+        this.userService = userService;
     }
 
     public void handleMessage(Update update) {
         Long chatId = update.getMessage().getChatId();
         String messageText = update.getMessage().getText();
         String userName = update.getMessage().getFrom().getFirstName();
-
-        System.out.println("Received from " + userName + ": " + messageText);
+        userService.userOnboarding(chatId, userName);
 
         SendMessage message = SendMessage.builder()
                 .chatId(chatId.toString())
