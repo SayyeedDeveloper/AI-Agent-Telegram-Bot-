@@ -6,18 +6,19 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.generics.TelegramClient;
+import sayyeed.dev.aiagenttelegrambot.service.rag.RagService;
 
 @Service
 public class MessageService {
 
     private final TelegramClient telegramClient;
     private final UserService userService;
-    private final GeminiChatService geminiChatService;
+    private final RagService ragService;
 
-    public MessageService(TelegramClient telegramClient, UserService userService, GeminiChatService geminiChatService) {
+    public MessageService(TelegramClient telegramClient, UserService userService, RagService ragService) {
         this.telegramClient = telegramClient;
         this.userService = userService;
-        this.geminiChatService = geminiChatService;
+        this.ragService = ragService;
     }
 
     public void handleMessage(Update update) {
@@ -48,7 +49,7 @@ public class MessageService {
             sendMessage(chatId,"Sorry somthing went wrong 😓. Please /start again");
         }else {
             sendTypingAction(chatId);
-            sendMessage(chatId, geminiChatService.askAI(userId, text));
+            sendMessage(chatId, ragService.chat(userId, text));
         }
     }
 

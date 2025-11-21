@@ -1,8 +1,9 @@
-package sayyeed.dev.aiagenttelegrambot.service;
+package sayyeed.dev.aiagenttelegrambot.service.rag;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.stereotype.Service;
+import sayyeed.dev.aiagenttelegrambot.service.UserAiLogsService;
 
 import java.util.List;
 
@@ -21,10 +22,21 @@ public class GeminiChatService {
     }
 
     public String askAI(String userId, String prompt) {
-        List<Message> history = logsService.getUserHistory(userId, HISTORY_LIMIT);
+        return askAIWithCustomSystem(userId, prompt, SYSTEM_PROMPT);
+    }
+
+    /**
+     * Ask AI with a custom system prompt (used by RAG system)
+     * Note: This method does NOT load history from database as it's provided in the system prompt by ContextAdvisor
+     *
+     * @param userId User identifier
+     * @param prompt User's prompt
+     * @param systemPrompt Custom system prompt with context
+     * @return AI response
+     */
+    public String askAIWithCustomSystem(String userId, String prompt, String systemPrompt) {
         String response = client.prompt()
-                .messages(history)
-                .system(SYSTEM_PROMPT)
+                .system(systemPrompt)
                 .user(prompt)
                 .call()
                 .content();

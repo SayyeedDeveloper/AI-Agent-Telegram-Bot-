@@ -45,4 +45,22 @@ public class UserAiLogsService {
 
         return messages;
     }
+
+    public List<String> getUserHistoryFormatted(String userId, int n) {
+        List<UserAiLogsEntity> logs = repository.findByUserIdOrderByLocalDateTimeDesc(
+                userId,
+                PageRequest.of(0, n)
+        );
+
+        List<String> formattedMessages = new ArrayList<>();
+
+        for (int i = logs.size() - 1; i >= 0; i--) {
+            UserAiLogsEntity log = logs.get(i);
+            formattedMessages.add("User: " + log.getPrompt());
+            formattedMessages.add("Assistant: " + log.getResponse());
+        }
+
+        return formattedMessages;
+    }
+
 }
