@@ -23,7 +23,7 @@ public class VectorStoreEntity {
     @Column(columnDefinition = "TEXT")
     private String text;
 
-    @Column
+    @Column(columnDefinition = "vector(768)")
     private List<Double> embedding;
 
     @Column(name = "timestamp", nullable = false, updatable = false)

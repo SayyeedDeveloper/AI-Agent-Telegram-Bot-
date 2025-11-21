@@ -1,6 +1,5 @@
-package sayyeed.dev.aiagenttelegrambot.service;
+package sayyeed.dev.aiagenttelegrambot.service.rag;
 
-import org.springframework.ai.document.Document;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 

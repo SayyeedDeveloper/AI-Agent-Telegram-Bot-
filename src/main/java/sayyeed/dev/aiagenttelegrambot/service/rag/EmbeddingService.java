@@ -1,4 +1,4 @@
-package sayyeed.dev.aiagenttelegrambot.service;
+package sayyeed.dev.aiagenttelegrambot.service.rag;
 
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.embedding.EmbeddingResponse;

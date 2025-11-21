@@ -1,4 +1,4 @@
-package sayyeed.dev.aiagenttelegrambot.service;
+package sayyeed.dev.aiagenttelegrambot.service.rag;
 
 import org.springframework.stereotype.Service;
 import sayyeed.dev.aiagenttelegrambot.entitly.VectorStoreEntity;
