@@ -40,7 +40,7 @@ public class MessageService {
 
     private void handleStart(Long chatId, String userName) {
         userService.userOnboarding(chatId, userName);
-        sendMessage(chatId, "Welcome, This is Gemini AI, How Can I help you? 🤖");
+        sendMessage(chatId, "Welcome, This is Your Second Brain 🧠, How Can I help you?");
     }
 
     private void handleDefault(Long chatId, String text) {
